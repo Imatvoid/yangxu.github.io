@@ -71,22 +71,22 @@
     
     
     <entry>
-      <title>目录</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>About  atVoid</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>等我不加班时候补上。</p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>About  atVoid</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>目录</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<p>等我不加班时候补上。</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
