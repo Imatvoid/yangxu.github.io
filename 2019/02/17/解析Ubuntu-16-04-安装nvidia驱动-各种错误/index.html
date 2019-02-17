@@ -83,7 +83,7 @@
     <script defer type="text/javascript" src="/js/index.js"></script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Imatvoid's blog</title>
+    <title>解析Ubuntu 16.04 安装nvidia驱动 各种错误 | Imatvoid's blog</title>
   </head>
   <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
     
@@ -104,7 +104,7 @@
       <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
       <ul id="menu" role="menubar" aria-hidden="false">
         
-        <li role="menuitem"><a href="/" class="current">首页</a></li>
+        <li role="menuitem"><a href="/">首页</a></li>
         
         <li role="menuitem"><a href="/archives/">归档</a></li>
         
@@ -125,25 +125,22 @@
         <div class="main-container">
           <div class="content">
             
-
-<div id="index" class="index page">
+<div id="post" class="page">
   
   <article class="article post card" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/解析Ubuntu-16-04-安装nvidia驱动-各种错误/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="yangxu">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
+       <meta itemprop="name" content="yangxu">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
       </span>
       <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Imatvoid's blog">
+       <meta itemprop="name" content="Imatvoid's blog">
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/02/17/解析Ubuntu-16-04-安装nvidia驱动-各种错误/" itemprop="url">解析Ubuntu 16.04 安装nvidia驱动 各种错误</a>
-      </h1>
+      <h1 class="post-title" itemprop="name headline">解析Ubuntu 16.04 安装nvidia驱动 各种错误</h1>
       <div class="post-meta">
         
         <span class="post-date">
@@ -155,7 +152,6 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      
       <h1 id="解析-Ubuntu-16-04-安装nvidia驱动-各种错误"><a href="#解析-Ubuntu-16-04-安装nvidia驱动-各种错误" class="headerlink" title="解析 Ubuntu 16.04 安装nvidia驱动 各种错误"></a>解析 Ubuntu 16.04 安装nvidia驱动 各种错误</h1><h2 id="0-环境"><a href="#0-环境" class="headerlink" title="0.环境"></a>0.环境</h2><p>​         操作系统：ubuntu 16.04LTS<br>​         显卡：nvidia Geforce 970</p>
 <h2 id="1-安装方式说明"><a href="#1-安装方式说明" class="headerlink" title="1.安装方式说明"></a>1.安装方式说明</h2><h4 id="1-1ppa源安装"><a href="#1-1ppa源安装" class="headerlink" title="1.1ppa源安装"></a>1.1ppa源安装</h4><p> 不建议通过这种方式安装，因为你无法配置具体选项且成功后需要经常手动更新驱动。当然鉴于其他方式安装对新手较为繁琐且 问题很多，如果你仅仅是需要临时搭建或者运气非常好，那么可以尝试。确实非常简单。</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:xorg-edgers/ppa #添加ppa源</span><br><span class="line">sudo add-apt-repository ppa:graphics-drivers/ppa #添加ppa源</span><br><span class="line">sudo apt-get update #更新apt-get</span><br></pre></td></tr></table></figure>
@@ -193,91 +189,23 @@
 <p>若失败则跳回第一步卸载后重新开始。</p>
 <h4 id="2-11-重新进入桌面"><a href="#2-11-重新进入桌面" class="headerlink" title="2.11 重新进入桌面"></a>2.11 重新进入桌面</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service lightdm start #没自动跳的话 crtl+alt+f7</span><br><span class="line">nvidia-settings #若弹出设置对话框，亦表示驱动安装成功</span><br></pre></td></tr></table></figure>
 
-      
     </main>
     <footer class="post-footer">
       
     </footer>
   </article>
   
-  <article class="article post card" itemscope="" itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/sleep-和wait-方法与对象锁、锁池、等待池/">
-      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="yangxu">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Imatvoid's blog">
-      </span>
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2017/01/17/sleep-和wait-方法与对象锁、锁池、等待池/" rel="next" title="sleep()和wait()方法与对象锁、锁池、等待池"><i class="fas fa-angle-left"></i><span class="nav-title">sleep()和wait()方法与对象锁、锁池、等待池</span></a>
+      
     </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2017/01/17/sleep-和wait-方法与对象锁、锁池、等待池/" itemprop="url">sleep()和wait()方法与对象锁、锁池、等待池</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2017-01-17T18:28:04+08:00">2017-01-17 18:28:04</time></span>
-        </span>
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
+    <div class="page-nav-prev page-nav-item">
       
-      <p>一道Java的题目:</p>
-<blockquote>
-<p>关于sleep()和wait()，以下描述错误的一项是:</p>
-<ul>
-<li>A sleep是线程类（Thread）的方法，wait是Object类的方法；</li>
-<li>B sleep不释放对象锁，wait放弃对象锁</li>
-<li>C sleep暂停线程、但监控状态仍然保持，结束后会自动恢复</li>
-<li>D wait后进入等待锁定池，只有针对此对象发出notify方法后获得对象锁进入运行状态</li>
-</ul>
-</blockquote>
-<p><strong>1.关于对象锁</strong>：</p>
-<p><strong>截取网上的一段话</strong>：</p>
-<blockquote>
-<p>  所有对象都自动含有单一的锁。<br>     JVM负责跟踪对象被加锁的次数。如果一个对象被解锁，其计数变为0。在任务（线程）第一次给对象加锁的时候，计数变为1。每当这个相同的任务（线程）在此对象上获得锁时，计数会递增。<br>     只有首先获得锁的任务（线程）才能继续获取该对象上的多个锁。<br>     每当任务离开一个synchronized（同步）方法，计数递减，当计数为0的时候，锁被完全释放，此时别的任务就可以使用此资源。</p>
-</blockquote>
-<p>   这段话令人感到迷惑，一个对象不是只有一个锁吗？只有获得这个对象的锁才能对它进行操作，若这个对象的锁被一个线程先获得，那就其他线程就需要等待。那多次加锁什么意思，锁不是依附于对象的吗？<br>​    在往下的文章中，我暂且理解为一个对象有且只有一把锁，锁在不同线程间传递，一个线程可以多次获得同一个对象的锁。暂且不考虑一个对象上多个锁这种方法是不是确实存在，这对下面影响不大。</p>
-<p><strong>2.关于锁池和等待池</strong></p>
-<p> 在Java中，每个对象都有两个池，锁(monitor)池和等待池</p>
-<ul>
-<li><p>锁池:假设线程A已经拥有了某个对象(注意:不是类)的锁，而其它的线程想要调用这个对象的某个synchronized方法(或者synchronized块)，由于这些线程在进入对象的synchronized方法之前必须先获得该对象的锁的拥有权，但是该对象的锁目前正被线程A拥有，所以这些线程就进入了该对象的锁池中。<br>​    </p>
-</li>
-<li><p>等待池:假设一个线程A调用了某个对象的wait()方法，线程A就会释放该对象的锁(因为wait()方法必须出现在synchronized中，这样自然在执行wait()方法之前线程A就已经拥有了该对象的锁)，同时线程A就进入到了该对象的等待池中。如果另外的一个线程调用了相同对象的notifyAll()方法，那么处于该对象的等待池中的线程就会全部进入该对象的锁池中，准备争夺锁的拥有权。如果另外的一个线程调用了相同对象的notify()方法，那么仅仅有一个处于该对象的等待池中的线程(随机)会进入该对象的锁池.</p>
-</li>
-</ul>
-<p><strong>深入理解</strong>：<br>​        如果线程调用了对象的 wait()方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。<br>​        当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait 线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。<br>优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，唯有线程再次调用 wait()方法，它才会重新回到等待池中。而竞争到对象锁的线程则继续往下执行，直到执行完了 synchronized 代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁。</p>
-<p>注：wait() ,notifyAll(),notify() 三个方法都是Object类中的方法. </p>
-<p><strong>3.关于wait() ,notifyAll(),notify() 三个方法</strong></p>
-<ul>
-<li>wait()<br>public final void wait() throws InterruptedException,IllegalMonitorStateException</li>
-</ul>
-<p>该方法用来将当前线程置入休眠状态，直到接到通知或被中断为止。在调用 wait()之前，线程必须要获得该对象的对象级别锁，即只能在同步方法或同步块中调用 wait()方法。进入 wait()方法后，当前线程释放锁。在从 wait()返回前，线程与其他线程竞争重新获得锁。如果调用 wait()时，没有持有适当的锁，则抛出 IllegalMonitorStateException，它是 RuntimeException 的一个子类，因此，不需要 try-catch 结构。</p>
-<ul>
-<li>notify()<br>public final native void notify() throws IllegalMonitorStateException</li>
-</ul>
-<p>该方法也要在同步方法或同步块中调用，即在调用前，线程也必须要获得该对象的对象级别锁，的如果调用 notify()时没有持有适当的锁，也会抛出 IllegalMonitorStateException。</p>
-<p>该方法用来通知那些可能等待该对象的对象锁的其他线程。如果有多个线程等待，则线程规划器任意挑选出其中一个 wait()状态的线程来发出通知，并使它等待获取该对象的对象锁（<strong>notify 后，当前线程不会马上释放该对象锁，wait 所在的线程并不能马上获取该对象锁，要等到程序退出 synchronized 代码块后，当前线程才会释放锁，wait所在的线程也才可以获取该对象锁</strong>），但不惊动其他同样在等待被该对象notify的线程们。<strong>当第一个获得了该对象锁的 wait 线程运行完毕以后，它会释放掉该对象锁，此时如果该对象没有再次使用 notify 语句，则即便该对象已经空闲，其他 wait 状态等待的线程由于没有得到该对象的通知，会继续阻塞在 wait 状态</strong>，直到这个对象发出一个 notify 或 notifyAll。<strong>这里需要注意：它们等待的是被 notify 或 notifyAll，而不是锁。这与下面的 notifyAll()方法执行后的情况不同。</strong></p>
-<ul>
-<li>notifyAll()<br>public final native void notifyAll() throws IllegalMonitorStateException</li>
-</ul>
-<p>该方法与 notify ()方法的工作方式相同，重要的一点差异是：</p>
-<p>notifyAll 使所有原来在该对象上 wait 的线程统统退出 wait 的状态（即全部被唤醒，不再等待 notify 或 notifyAll，但由于此时还没有获取到该对象锁，因此还不能继续往下执行），变成等待获取该对象上的锁，一旦该对象锁被释放（notifyAll 线程退出调用了 notifyAll 的 synchronized 代码块的时候），他们就会去竞争。如果其中一个线程获得了该对象锁，它就会继续往下执行，在它退出 synchronized 代码块，释放锁后，其他的已经被唤醒的线程将会继续竞争获取该锁，一直进行下去，直到所有被唤醒的线程都执行完毕。</p>
-<p><strong>4.sleep()不会释放掉锁（监控）</strong><br>​     最开始的那道题答案是D</p>
-
-      
-    </main>
-    <footer class="post-footer">
-      
-    </footer>
-  </article>
-  
+    </div>
+  </nav>
   
   
 </div>
@@ -337,6 +265,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#解析-Ubuntu-16-04-安装nvidia驱动-各种错误"><span class="toc-text">解析 Ubuntu 16.04 安装nvidia驱动 各种错误</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#0-环境"><span class="toc-text">0.环境</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#1-安装方式说明"><span class="toc-text">1.安装方式说明</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#1-1ppa源安装"><span class="toc-text">1.1ppa源安装</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#1-2手动run文件安装"><span class="toc-text">1.2手动run文件安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#2-run文件安装详解"><span class="toc-text">2.run文件安装详解</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-1手动下载驱动"><span class="toc-text">2.1手动下载驱动</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-2卸载旧驱动"><span class="toc-text">2.2卸载旧驱动</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-3安装可能需要的依赖（可选，脸红可以跳过）"><span class="toc-text">2.3安装可能需要的依赖（可选，脸红可以跳过）</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-4禁用noueau驱动"><span class="toc-text">2.4禁用noueau驱动</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-5进入blos关闭secure-boot-（华硕还有fast-boot）"><span class="toc-text">2.5进入blos关闭secure boot （华硕还有fast boot）</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-6进入tty关闭图形界面"><span class="toc-text">2.6进入tty关闭图形界面</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-7-运行-run文件选择合适选项。"><span class="toc-text">2.7  运行.run文件选择合适选项。</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-8-关于pre-script-failed"><span class="toc-text">2.8  关于pre-script failed</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-9-安装过程中的选项"><span class="toc-text">2.9  安装过程中的选项</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-10安装完成后验证"><span class="toc-text">2.10安装完成后验证</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#2-11-重新进入桌面"><span class="toc-text">2.11 重新进入桌面</span></a></li></ol></li></ol></div>
+    </div>
+    
     
     
     <hr>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-17T10:18:02.604Z</updated>
+  <updated>2019-02-17T10:25:54.579Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="http://yoursite.com/2019/01/05/test/"/>
-    <id>http://yoursite.com/2019/01/05/test/</id>
-    <published>2019-01-05T03:18:22.486Z</published>
-    <updated>2019-02-17T10:18:02.604Z</updated>
+    <title>解析Ubuntu 16.04 安装nvidia驱动 各种错误</title>
+    <link href="http://yoursite.com/2019/02/17/%E8%A7%A3%E6%9E%90Ubuntu-16-04-%E5%AE%89%E8%A3%85nvidia%E9%A9%B1%E5%8A%A8-%E5%90%84%E7%A7%8D%E9%94%99%E8%AF%AF/"/>
+    <id>http://yoursite.com/2019/02/17/解析Ubuntu-16-04-安装nvidia驱动-各种错误/</id>
+    <published>2019-02-17T10:23:43.000Z</published>
+    <updated>2019-02-17T10:25:54.579Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h2 id=&quot;test&quot;&gt;&lt;a href=&quot;#test&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;解析-Ubuntu-16-04-安装nvidia驱动-各种错误&quot;&gt;&lt;a href=&quot;#解析-Ubuntu-16-04-安装nvidia驱动-各种错误&quot; class=&quot;headerlink&quot; title=&quot;解析 Ubuntu 16.04 安装nvidia驱动
         
       
     
@@ -39,11 +39,11 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/01/05/hello-world/"/>
-    <id>http://yoursite.com/2019/01/05/hello-world/</id>
-    <published>2019-01-05T02:50:30.828Z</published>
-    <updated>2019-02-17T10:17:54.814Z</updated>
+    <title>sleep()和wait()方法与对象锁、锁池、等待池</title>
+    <link href="http://yoursite.com/2017/01/17/sleep-%E5%92%8Cwait-%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AF%B9%E8%B1%A1%E9%94%81%E3%80%81%E9%94%81%E6%B1%A0%E3%80%81%E7%AD%89%E5%BE%85%E6%B1%A0/"/>
+    <id>http://yoursite.com/2017/01/17/sleep-和wait-方法与对象锁、锁池、等待池/</id>
+    <published>2017-01-17T10:28:04.000Z</published>
+    <updated>2019-02-17T10:29:30.894Z</updated>
     
     <summary type="html">
     
@@ -51,7 +51,12 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;p&gt;一道Java的题目:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关于sleep()和wait()，以下描述错误的一项是:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A sleep是线程类（Thread）的方法，wait是Object类的方法；&lt;/li&gt;
+&lt;li&gt;B
         
       
     
