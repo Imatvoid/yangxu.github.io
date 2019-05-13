@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Imatvoid's blog" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>887. Super Egg Drop(鸡蛋掉落) | Imatvoid's blog</title>
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Imatvoid's blog</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/11/leetcode/887. Super Egg Drop/">
+      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="yangxu">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Imatvoid's blog">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">887. Super Egg Drop(鸡蛋掉落)</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-05-11T21:22:06+08:00">2019-05-11 21:22:06</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h2 id="Desc"><a href="#Desc" class="headerlink" title="Desc"></a>Desc</h2><p><a href="https://leetcode.com/problems/super-egg-drop/" target="_blank" rel="noopener">desc</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>你将获得 <code>K</code> 个鸡蛋，并可以使用一栋从 <code>1</code> 到 <code>N</code>  共有 <code>N</code> 层楼的建筑。</p>
+<p>每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。</p>
+<p>你知道存在楼层 <code>F</code> ，满足 <code>0 &lt;= F &lt;= N</code> 任何从高于 <code>F</code> 的楼层落下的鸡蛋都会碎，从 <code>F</code> 楼层或比它低的楼层落下的鸡蛋都不会破。</p>
+<p>每次<em>移动</em>，你可以取一个鸡蛋（如果你有完整的鸡蛋）并把它从任一楼层 <code>X</code> 扔下（满足 <code>1 &lt;= X &lt;= N</code>）。</p>
+<p>你的目标是<strong>确切地</strong>知道 <code>F</code> 的值是多少。</p>
+<p>无论 <code>F</code> 的初始值如何，你确定 <code>F</code> 的值的最小移动次数是多少？</p>
+<a id="more"></a>
+<p><strong>示例 1：</strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">输入：K = 1, N = 2<br>输出：2<br>解释：<br>鸡蛋从 1 楼掉落。如果它碎了，我们肯定知道 F = 0 。<br>否则，鸡蛋从 2 楼掉落。如果它碎了，我们肯定知道 F = 1 。<br>如果它没碎，那么我们肯定知道 F = 2 。<br>因此，在最坏的情况下我们需要移动 2 次以确定 F 是多少。<br></code></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">输入：K = 2, N = 6<br>输出：3<br></code></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">输入：K = 3, N = 14<br>输出：4<br></code></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= K &lt;= 100</code></li>
+<li><code>1 &lt;= N &lt;= 10000</code></li>
+</ol>
+<h2 id="大意概括"><a href="#大意概括" class="headerlink" title="大意概括"></a>大意概括</h2><p>经典的扔鸡蛋问题,常见2个鸡蛋100层楼</p>
+<h2 id="普通做法"><a href="#普通做法" class="headerlink" title="普通做法"></a>普通做法</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><code>O(K * N^2)</code><br>首先，这个题比较绕。需要求一个最优决策使得步数最小，但是实际的步数是随着真实结果变化而变化的。<br>于是，为了保证在我们假设的步数内一定能够解完，我们可以假设每次决策都会得到最坏结果。</p>
+<p><code>dp[n][k]</code>表示用k个鸡蛋测n层最少需要多少步。<br>我们可以枚举第一次在第i层扔鸡蛋，会得到两种结果:</p>
+<ol>
+<li>鸡蛋坏掉: 我们接下来需要面对的情形是: 用 k-1 个鸡蛋来测量 i-1 层，所以最少需要 <code>dp[i-1][k-1]</code>步。</li>
+<li>鸡蛋没坏: 我们接下来要面对的情形是: 用 k 个鸡蛋来测量 n-i 层，所以最少需要<code>dp[n-i][k]</code>步。<br>因为我们总会面对最坏情况，所以，在第i层扔，会用 <code>max(dp[i-1][k-1], dp[n-i][k]) + 1</code> 步。</li>
+</ol>
+<p>所以我们的递推式如下:<br><code>dp[n][k] = min{ max(dp[i-1][k-1], dp[n-i][k]) + 1 } (1 &lt;= i &lt;= n)</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**<br>     * 普通dp解法  O(KN^2)<br>     * <span class="hljs-doctag">@param</span> K<br>     * <span class="hljs-doctag">@param</span> N<br>     * <span class="hljs-doctag">@return</span><br>     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> dp[][] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> [N+<span class="hljs-number">1</span>][K+<span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= N; i++) &#123;<br>            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>            dp[i][<span class="hljs-number">1</span>] = i;<br>        &#125;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= K; j++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; i++) &#123;<br>                dp[i][j] = i;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt; i; k++) &#123;<br>                    dp[i][j] = Math.min(dp[i][j], Math.max(dp[k-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>], dp[i-k][j]) + <span class="hljs-number">1</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[N][K];<br>    &#125;<br></code></pre></td></tr></table></figure>
+<h2 id="更好的做法"><a href="#更好的做法" class="headerlink" title="更好的做法"></a>更好的做法</h2><h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>我们把这个问题换一种思路:<br>使用<code>dp[m][k]</code>代表有K个鸡蛋,最多可以做M次移动,这时我们最多能判断出多少层中的结果.</p>
+<p>DP递推等式是:<br><code>dp[m][k] = dp[m - 1][k - 1] + dp[m - 1][k] + 1</code>,<br>假设我们在X层扔鸡蛋,可以走M次,有K个鸡蛋<br>如果鸡蛋碎了, 我们能向下检查,层数是 <code>dp[m - 1][k - 1]</code> .<br>如果没碎, 我们能向上检查,层数是<code>dp[m - 1][k - 1]</code>.</p>
+<p>𝑓𝑙𝑜𝑜𝑟(𝑒𝑔𝑔𝑠,𝑑𝑟𝑜𝑝𝑠)=𝑓𝑙𝑜𝑜𝑟(𝑒𝑔𝑔𝑠−1,𝑑𝑟𝑜𝑝𝑠−1)+𝑓𝑙𝑜𝑜𝑟(𝑒𝑔𝑔𝑠,𝑑𝑟𝑜𝑝𝑠−1)+1</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**<br>     * O(KlogN) Time, O(NK) Space<br>     * <span class="hljs-doctag">@param</span> K<br>     * <span class="hljs-doctag">@param</span> N<br>     * <span class="hljs-doctag">@return</span><br>     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">superEggDropBetter</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br><br>        <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N + <span class="hljs-number">1</span>][K + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">int</span> m = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (dp[m][K] &lt; N) &#123;<br>            ++m;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= K; ++k)<br>                dp[m][k] = dp[m - <span class="hljs-number">1</span>][k - <span class="hljs-number">1</span>] + dp[m - <span class="hljs-number">1</span>][k] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> m;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h4 id="K-2-N-100"><a href="#K-2-N-100" class="headerlink" title="K=2,N=100"></a>K=2,N=100</h4><p>如果是K=2,N=100,那么可以比较形象的理解:</p>
+<p>因为只有两个鸡蛋，所以第一个鸡蛋应该是按一定的间距扔，比如10楼，20楼，30楼等等，比如10楼和20楼没碎，30楼碎了，那么第二个鸡蛋就要做线性搜索，分别尝试21楼，22楼，23楼等等直到鸡蛋碎了，就能找到临界点。那么我们来看下列两种情况：</p>
+<ol>
+<li>假如临界点是9楼，那么鸡蛋1在第一次扔10楼碎掉，然后鸡蛋2依次遍历1到9楼，则总共需要扔10次。</li>
+<li>假如临界点是100楼，那么鸡蛋1需要扔10次，到100楼时碎掉，然后鸡蛋2依次遍历91楼到100楼，总共需要扔19次。</li>
+</ol>
+<p>所以上述方法的最坏情况是19次，那么有没有更少的方法呢，上面那个方法每多扔一次鸡蛋1，鸡蛋2的线性搜索次数最多还是10次，那么最坏情况肯定会增加，所以我们需要让每多扔一次鸡蛋1，鸡蛋2的线性搜索最坏情况减少1，这样恩能够保持整体最坏情况的平衡，那么我们假设鸡蛋1第一次在第X层扔，然后向上X-1层扔一次，然后向上X-2层扔，以此类推直到100层，那么我们通过下面的公式求出X：</p>
+<p>X + (X-1) + (X-2) + … + 1 = 100 -&gt; X = 14</p>
+<p>所以我们先到14楼，然后27楼，然后39楼，以此类推，最坏情况需要扔14次。</p>
+<h4 id="K-3-N-100"><a href="#K-3-N-100" class="headerlink" title="K=3,N=100"></a>K=3,N=100</h4><p>如果是K=3,N=100,那么实际过程是:</p>
+<p>我们可以求出实际M步数=9,那从几层开始尝试呢?</p>
+<p>我们假设从X层开始扔,并且碎了,那么K=2,M=8,我们一定要可以确定剩余下面层中的结果</p>
+<p><code>DP[8][2]</code>可以覆盖的层数是36,可以用2个鸡蛋,8次,来确定下面的36层中的结果.</p>
+<p><strong>所以X=37,我们第一次从37层开始丢.</strong></p>
+<p>如果37层没碎,那么K=3,M=8,我们要再选一层X2丢</p>
+<p>假设碎了,那么K=2,M=7,可以覆盖28层,所以X2=37+28+1=66,</p>
+<p><strong>所以X2=66,我们第二次从66层开始丢</strong></p>
+<p>如果66层没碎,那么K=3,M=7,我们要再选一层X3丢</p>
+<p>假设碎了,那么K=2,M=6,可以覆盖21层,所以X3=66+21+1=88,</p>
+<p><strong>所以X3=88,我们第三次从88层开始丢</strong></p>
+<p>实际是先到37层, 然后66层, 88层.</p>
+<p><img src="/2019/05/11/leetcode/887. Super Egg Drop/image-20190513000045632.png" alt="image-20190513000045632"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://math.stackexchange.com/questions/2012591/eggs-and-floors-puzzle-extended-generalized" target="_blank" rel="noopener">https://math.stackexchange.com/questions/2012591/eggs-and-floors-puzzle-extended-generalized</a></p>
+<p><a href="https://sankalpiitr.wordpress.com/2012/03/02/the-2-eggs-problem-extended-to-3-eggs/" target="_blank" rel="noopener">https://sankalpiitr.wordpress.com/2012/03/02/the-2-eggs-problem-extended-to-3-eggs/</a></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/LeetCode-Hard/" rel="tag"><i class="fas fa-tags"></i>LeetCode-Hard</a>
+        
+        <a class="post-tag button" href="/tags/LeetCode-DP/" rel="tag"><i class="fas fa-tags"></i>LeetCode-DP</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/02/17/解析Ubuntu-16-04-安装nvidia驱动-各种错误/" rel="next" title="解析Ubuntu 16.04 安装nvidia驱动 各种错误"><i class="fas fa-angle-left"></i><span class="nav-title">解析Ubuntu 16.04 安装nvidia驱动 各种错误</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="yangxu">
+  
+  <h1 class="author-name">yangxu</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">3</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">5</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">9</a></div>
+    </div>
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Desc"><span class="toc-text">Desc</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#描述"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#大意概括"><span class="toc-text">大意概括</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#普通做法"><span class="toc-text">普通做法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#思路"><span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#更好的做法"><span class="toc-text">更好的做法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#思考"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#扩展"><span class="toc-text">扩展</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#K-2-N-100"><span class="toc-text">K=2,N=100</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#K-3-N-100"><span class="toc-text">K=3,N=100</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:yanxucpp@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Imatvoid" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">yangxu</span><span class="year"><i class="far fa-copyright"></i>2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-17T13:07:07.155Z</updated>
+  <updated>2019-05-12T16:08:39.771Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>887. Super Egg Drop(鸡蛋掉落)</title>
+    <link href="http://yoursite.com/2019/05/11/leetcode/887.%20Super%20Egg%20Drop/"/>
+    <id>http://yoursite.com/2019/05/11/leetcode/887. Super Egg Drop/</id>
+    <published>2019-05-11T13:22:06.000Z</published>
+    <updated>2019-05-12T16:08:39.771Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Desc&quot;&gt;&lt;a href=&quot;#Desc&quot; class=&quot;headerlink&quot; title=&quot;Desc&quot;&gt;&lt;/a&gt;Desc&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/super-egg-drop/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;desc&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;你将获得 &lt;code&gt;K&lt;/code&gt; 个鸡蛋，并可以使用一栋从 &lt;code&gt;1&lt;/code&gt; 到 &lt;code&gt;N&lt;/code&gt;  共有 &lt;code&gt;N&lt;/code&gt; 层楼的建筑。&lt;/p&gt;
+&lt;p&gt;每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。&lt;/p&gt;
+&lt;p&gt;你知道存在楼层 &lt;code&gt;F&lt;/code&gt; ，满足 &lt;code&gt;0 &amp;lt;= F &amp;lt;= N&lt;/code&gt; 任何从高于 &lt;code&gt;F&lt;/code&gt; 的楼层落下的鸡蛋都会碎，从 &lt;code&gt;F&lt;/code&gt; 楼层或比它低的楼层落下的鸡蛋都不会破。&lt;/p&gt;
+&lt;p&gt;每次&lt;em&gt;移动&lt;/em&gt;，你可以取一个鸡蛋（如果你有完整的鸡蛋）并把它从任一楼层 &lt;code&gt;X&lt;/code&gt; 扔下（满足 &lt;code&gt;1 &amp;lt;= X &amp;lt;= N&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;你的目标是&lt;strong&gt;确切地&lt;/strong&gt;知道 &lt;code&gt;F&lt;/code&gt; 的值是多少。&lt;/p&gt;
+&lt;p&gt;无论 &lt;code&gt;F&lt;/code&gt; 的初始值如何，你确定 &lt;code&gt;F&lt;/code&gt; 的值的最小移动次数是多少？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode-Hard" scheme="http://yoursite.com/tags/LeetCode-Hard/"/>
+    
+      <category term="LeetCode-DP" scheme="http://yoursite.com/tags/LeetCode-DP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>解析Ubuntu 16.04 安装nvidia驱动 各种错误</title>
     <link href="http://yoursite.com/2019/02/17/%E8%A7%A3%E6%9E%90Ubuntu-16-04-%E5%AE%89%E8%A3%85nvidia%E9%A9%B1%E5%8A%A8-%E5%90%84%E7%A7%8D%E9%94%99%E8%AF%AF/"/>
     <id>http://yoursite.com/2019/02/17/解析Ubuntu-16-04-安装nvidia驱动-各种错误/</id>
     <published>2019-02-17T10:23:43.000Z</published>
-    <updated>2019-02-17T13:07:07.155Z</updated>
+    <updated>2019-02-17T13:07:08.000Z</updated>
     
     <summary type="html">
     
@@ -49,7 +77,7 @@
     <link href="http://yoursite.com/2017/01/17/sleep-%E5%92%8Cwait-%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AF%B9%E8%B1%A1%E9%94%81%E3%80%81%E9%94%81%E6%B1%A0%E3%80%81%E7%AD%89%E5%BE%85%E6%B1%A0/"/>
     <id>http://yoursite.com/2017/01/17/sleep-和wait-方法与对象锁、锁池、等待池/</id>
     <published>2017-01-17T10:28:04.000Z</published>
-    <updated>2019-02-17T13:13:28.658Z</updated>
+    <updated>2019-02-17T13:13:28.000Z</updated>
     
     <summary type="html">
     

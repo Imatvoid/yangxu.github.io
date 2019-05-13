@@ -55,6 +55,7 @@
     <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
     <script defer type="text/javascript" src="/js/scrollspy.js"></script>
     <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
     <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
@@ -81,6 +82,55 @@
     
     
     <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
     <title>解析Ubuntu 16.04 安装nvidia驱动 各种错误 | Imatvoid's blog</title>
@@ -104,15 +154,13 @@
       <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
       <ul id="menu" role="menubar" aria-hidden="false">
         
-        <li role="menuitem"><a href="/">首页</a></li>
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
         
-        <li role="menuitem"><a href="/archives/">归档</a></li>
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
         
-        <li role="menuitem"><a href="/categories/">分类</a></li>
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
         
-        <li role="menuitem"><a href="/tags/">标签</a></li>
-        
-        <li role="menuitem"><a href="/about/">关于</a></li>
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
         
       </ul>
     </nav>
@@ -164,21 +212,21 @@
 <a id="more"></a>
 <h2 id="0-环境"><a href="#0-环境" class="headerlink" title="0.环境"></a>0.环境</h2><p>​         操作系统：ubuntu 16.04LTS<br>​         显卡：nvidia Geforce 970</p>
 <h2 id="1-安装方式说明"><a href="#1-安装方式说明" class="headerlink" title="1.安装方式说明"></a>1.安装方式说明</h2><h4 id="1-1ppa源安装"><a href="#1-1ppa源安装" class="headerlink" title="1.1ppa源安装"></a>1.1ppa源安装</h4><p> 不建议通过这种方式安装，因为你无法配置具体选项且成功后需要经常手动更新驱动。当然鉴于其他方式安装对新手较为繁琐且 问题很多，如果你仅仅是需要临时搭建或者运气非常好，那么可以尝试。确实非常简单。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:xorg-edgers/ppa #添加ppa源</span><br><span class="line">sudo add-apt-repository ppa:graphics-drivers/ppa #添加ppa源</span><br><span class="line">sudo apt-get update #更新apt-get</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sudo add-apt-repository ppa:xorg-edgers/ppa #添加ppa源<br>sudo add-apt-repository ppa:graphics-drivers/ppa #添加ppa源<br>sudo apt-get update #更新apt-get<br></code></pre></td></tr></table></figure>
 <p>然后进入：系统设置-&gt;软件和更新-&gt;附件驱动，选择更新的显卡驱动。<br><img src="https://img-blog.csdn.net/20180417115337235?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ1NjE5MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
 <h4 id="1-2手动run文件安装"><a href="#1-2手动run文件安装" class="headerlink" title="1.2手动run文件安装"></a>1.2手动run文件安装</h4><p>推荐这种方式，我们可以根据具体机器配置具体选项。避免出现黑屏，循环登录等问题。</p>
 <h2 id="2-run文件安装详解"><a href="#2-run文件安装详解" class="headerlink" title="2.run文件安装详解"></a>2.run文件安装详解</h2><h4 id="2-1手动下载驱动"><a href="#2-1手动下载驱动" class="headerlink" title="2.1手动下载驱动"></a>2.1手动下载驱动</h4><p><a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">官方显卡驱动</a>NVIDIA-Linux-x86_64-390.48.run<br>选择合适的参数后可以下载<br><img src="https://img-blog.csdn.net/20180417115752246?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ1NjE5MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
 <h4 id="2-2卸载旧驱动"><a href="#2-2卸载旧驱动" class="headerlink" title="2.2卸载旧驱动"></a>2.2卸载旧驱动</h4><p>卸载可能存在的旧版本 nvidia 驱动（对没有安装过 nvidia 驱动的主机，这步可以省略，但推荐执行，无害），如果你安装失败了也需要执行这一步。</p>
-<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge nvidia*</span><br><span class="line"><span class="comment">#若安装失败也是这样卸载以及</span></span><br><span class="line">./NVIDIA-Linux-x86_64-390.48.run --uninstall <span class="comment">#确保卸载干净。</span></span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get remove --purge nvidia*<br><span class="hljs-comment">#若安装失败也是这样卸载以及</span><br>./NVIDIA-Linux-x86_64-390.48.run --uninstall <span class="hljs-comment">#确保卸载干净。</span><br></code></pre></td></tr></table></figure>
 <h4 id="2-3安装可能需要的依赖（可选，脸红可以跳过）"><a href="#2-3安装可能需要的依赖（可选，脸红可以跳过）" class="headerlink" title="2.3安装可能需要的依赖（可选，脸红可以跳过）"></a>2.3安装可能需要的依赖（可选，脸红可以跳过）</h4><p>这里是为了确保万无一失</p>
-<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#其实很多你的环境已经安装了，所以一般并没有多少时间。</span></span><br><span class="line"> sudo apt-get update </span><br><span class="line"> sudo apt-get install dkms build-essential linux-headers-generic</span><br><span class="line"> sudo apt-get install gcc-multilib xorg-dev</span><br><span class="line"> sudo apt-get install freeglut3-dev libx11-dev libxmu-dev install libxi-dev  libgl1-mesa-glx libglu1-mesa libglu1-mesa-dev</span><br></pre></td></tr></table></figure>
-<h4 id="2-4禁用noueau驱动"><a href="#2-4禁用noueau驱动" class="headerlink" title="2.4禁用noueau驱动"></a>2.4禁用noueau驱动</h4><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/modprobe.d/blacklist-nouveau.conf </span><br><span class="line"><span class="comment">#在文件 blacklist-nouveau.conf 中加入如下内容：</span></span><br><span class="line"> blacklist nouveau</span><br><span class="line"> blacklist lbm-nouveau</span><br><span class="line"> options nouveau modeset=0</span><br><span class="line"> <span class="built_in">alias</span> nouveau off</span><br><span class="line"> <span class="built_in">alias</span> lbm-nouveau off</span><br><span class="line"> <span class="comment">#保存   :wq</span></span><br></pre></td></tr></table></figure>
-<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#禁用nouveau 内核模块</span></span><br><span class="line"><span class="built_in">echo</span> options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf</span><br><span class="line">sudo update-initramfs -u</span><br><span class="line">reboot <span class="comment">#重启</span></span><br><span class="line">lsmod |grep nouveau <span class="comment">#无显示则成功 当然驱动没了你的桌面分辨率会比较大。</span></span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#其实很多你的环境已经安装了，所以一般并没有多少时间。</span><br> sudo apt-get update <br> sudo apt-get install dkms build-essential linux-headers-generic<br> sudo apt-get install gcc-multilib xorg-dev<br> sudo apt-get install freeglut3-dev libx11-dev libxmu-dev install libxi-dev  libgl1-mesa-glx libglu1-mesa libglu1-mesa-dev<br></code></pre></td></tr></table></figure>
+<h4 id="2-4禁用noueau驱动"><a href="#2-4禁用noueau驱动" class="headerlink" title="2.4禁用noueau驱动"></a>2.4禁用noueau驱动</h4><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vi /etc/modprobe.d/blacklist-nouveau.conf <br><span class="hljs-comment">#在文件 blacklist-nouveau.conf 中加入如下内容：</span><br> blacklist nouveau<br> blacklist lbm-nouveau<br> options nouveau modeset=0<br> <span class="hljs-built_in">alias</span> nouveau off<br> <span class="hljs-built_in">alias</span> lbm-nouveau off<br> <span class="hljs-comment">#保存   :wq</span><br></code></pre></td></tr></table></figure>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#禁用nouveau 内核模块</span><br><span class="hljs-built_in">echo</span> options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf<br>sudo update-initramfs -u<br>reboot <span class="hljs-comment">#重启</span><br>lsmod |grep nouveau <span class="hljs-comment">#无显示则成功 当然驱动没了你的桌面分辨率会比较大。</span><br></code></pre></td></tr></table></figure>
 <h4 id="2-5进入blos关闭secure-boot-（华硕还有fast-boot）"><a href="#2-5进入blos关闭secure-boot-（华硕还有fast-boot）" class="headerlink" title="2.5进入blos关闭secure boot （华硕还有fast boot）"></a>2.5进入blos关闭secure boot （华硕还有fast boot）</h4><p>否则无法安装成功。</p>
 <h4 id="2-6进入tty关闭图形界面"><a href="#2-6进入tty关闭图形界面" class="headerlink" title="2.6进入tty关闭图形界面"></a>2.6进入tty关闭图形界面</h4><p>按 CTRL + ALT + F1 键登录，从 GUI 转至终端tty1（全黑色）。为了重建视频输出，必须先将其暂停。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service lightdm stop</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sudo service lightdm stop<br></code></pre></td></tr></table></figure>
 <p>如果命令行没有效果，Ubuntu 新版本使用 systemctl 替换 lightdm。</p>
-<h4 id="2-7-运行-run文件选择合适选项。"><a href="#2-7-运行-run文件选择合适选项。" class="headerlink" title="2.7  运行.run文件选择合适选项。"></a>2.7  运行.run文件选择合适选项。</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 下载目录</span><br><span class="line">chmod a+x NVIDIA-Linux-x86_64-384.90.run #添加权限</span><br><span class="line">sudo ./NVIDIA-Linux-x86_64-384.90.run --dkms --no-opengl-files</span><br></pre></td></tr></table></figure>
+<h4 id="2-7-运行-run文件选择合适选项。"><a href="#2-7-运行-run文件选择合适选项。" class="headerlink" title="2.7  运行.run文件选择合适选项。"></a>2.7  运行.run文件选择合适选项。</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">cd 下载目录<br>chmod a+x NVIDIA-Linux-x86_64-384.90.run #添加权限<br>sudo ./NVIDIA-Linux-x86_64-384.90.run --dkms --no-opengl-files<br></code></pre></td></tr></table></figure>
 <ul>
 <li><p>–no-opengl-files：表示只安装驱动文件，不安装OpenGL文件。这个参数不可省略，否则会导致登陆界面死循环，英语一般称为”login loop”或者”stuck in login”。</p>
 <p>当然脸红的情况下并不会。<br>必选参数解释：因为NVIDIA的驱动默认会安装OpenGL，而Ubuntu的内核本身也有OpenGL、且与GUI显示息息相关，一旦NVIDIA的驱动覆写了OpenGL，在GUI需要动态链接OpenGL库的时候就引起问题。</p>
@@ -195,9 +243,9 @@
 <li>32位兼容 安装最好 选yes</li>
 <li>x-org 最好别安，选no，有的电脑可能导致登录界面黑屏</li>
 </ul>
-<h4 id="2-10安装完成后验证"><a href="#2-10安装完成后验证" class="headerlink" title="2.10安装完成后验证"></a>2.10安装完成后验证</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi #若列出GPU的信息列表，表示驱动安装成功</span><br></pre></td></tr></table></figure>
+<h4 id="2-10安装完成后验证"><a href="#2-10安装完成后验证" class="headerlink" title="2.10安装完成后验证"></a>2.10安装完成后验证</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">nvidia-smi #若列出GPU的信息列表，表示驱动安装成功<br></code></pre></td></tr></table></figure>
 <p>若失败则跳回第一步卸载后重新开始。</p>
-<h4 id="2-11-重新进入桌面"><a href="#2-11-重新进入桌面" class="headerlink" title="2.11 重新进入桌面"></a>2.11 重新进入桌面</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service lightdm start #没自动跳的话 crtl+alt+f7</span><br><span class="line">nvidia-settings #若弹出设置对话框，亦表示驱动安装成功</span><br></pre></td></tr></table></figure>
+<h4 id="2-11-重新进入桌面"><a href="#2-11-重新进入桌面" class="headerlink" title="2.11 重新进入桌面"></a>2.11 重新进入桌面</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sudo service lightdm start #没自动跳的话 crtl+alt+f7<br>nvidia-settings #若弹出设置对话框，亦表示驱动安装成功<br></code></pre></td></tr></table></figure>
 
     </main>
     <footer class="post-footer">
@@ -225,6 +273,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/05/11/leetcode/887. Super Egg Drop/" rel="prev" title="887. Super Egg Drop(鸡蛋掉落)"><span class="nav-title">887. Super Egg Drop(鸡蛋掉落)</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -254,28 +304,28 @@
   <h2 class="author-description"></h2>
   <div class="site-count">
     
-    <div class="archives-count">
+    
+    
+    
+    <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">2</a></div>
+      <div><a href="/archives/">3</a></div>
     </div>
     
     
     
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="categories-count">
+    <div class="categories-count count-block">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">4</a></div>
+      <div><a href="/categories/">5</a></div>
     </div>
     
     
     
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="tags-count">
+    <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">7</a></div>
+      <div><a href="/tags/">9</a></div>
     </div>
+    
     
   </div>
   
@@ -321,10 +371,6 @@
       <ul>
         
         <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
         
       </ul>
     </div>
